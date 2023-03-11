@@ -2,8 +2,12 @@ import React from 'react';
 import cl from './MainPage.module.css'
 import logo from './img/main-logo.svg'
 import {classJoiner} from "../../utils/classJoiner";
+import {useLocation, useNavigate} from 'react-router-dom'
 
 const MainPage = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+
     return (
         <div className={cl.wrapper}>
             <div>
@@ -14,8 +18,13 @@ const MainPage = () => {
                 </span>
             <span className={cl.submit}>Подача заявок принимается 14 марта - 28 мая</span>
             <div className={cl.buttonWrapper}>
-                <button className={classJoiner(cl.buttonMore, cl.button)}>Подробнее</button>
-                <button className={classJoiner(cl.buttonContinue, cl.button)}>Подать заявку</button>
+                <a href={'https://vk.com/artmasters'}><button className={classJoiner(cl.buttonMore, cl.button)}>Перейти в сообщество
+                </button></a>
+                <button className={classJoiner(cl.buttonContinue, cl.button)} onClick={() => {
+                    navigate('/application', {
+                        location: location
+                    })
+                }}>Подать заявку</button>
             </div>
         </div>
     );

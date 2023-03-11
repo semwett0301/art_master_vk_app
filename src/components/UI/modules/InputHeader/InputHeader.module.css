@@ -1,0 +1,38 @@
+.name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.nameError {
+    color: #E81A3D;
+}
+
+.nameEmpty {
+    color: #FF6800;
+}
+
+.nameWrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+
+    margin-bottom: 6px;
+}
+
+.required {
+    color: #E81A3D;
+}
+
+.description {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #7A818B;
+}

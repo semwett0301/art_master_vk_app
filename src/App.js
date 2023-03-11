@@ -4,6 +4,7 @@ import '@vkontakte/vkui/dist/vkui.css';
 import MainPage from "./pages/MainPage/MainPage";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import EndPage from "./pages/EndPage/EndPage";
+import ApplicationPage from "./pages/ApplicationPage/ApplicationPage";
 
 export const router = createBrowserRouter([
     {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
     {
         path: '/success',
         element: <EndPage/>
+    },
+    {
+        path: '/application',
+        element: <ApplicationPage/>
     }
 ])
 

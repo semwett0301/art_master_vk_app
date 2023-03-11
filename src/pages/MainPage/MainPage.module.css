@@ -46,7 +46,7 @@
     flex-direction: column;
 
     height: 100px;
-    width: 205px;
+    width: 267px;
 }
 
 .button {
@@ -81,7 +81,7 @@
 
 @media screen and (max-width: 501px) {
     .wrapper {
-        background: url("/src/components/MainPage/img/main-background-first.svg") no-repeat center 60vh, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%) no-repeat;
+        background: url("/src/pages/MainPage/img/main-background-first.svg") no-repeat center 60vh, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%) no-repeat;
         padding-top: 103px;
         padding-bottom: 289px;
     }
@@ -104,7 +104,7 @@
 
 @media screen and (min-width: 502px) {
     .wrapper {
-        background: url("/src/components/MainPage/img/main-background-second.svg") no-repeat left -200px bottom -250px, url("/src/components/MainPage/img/main-background-first.svg") no-repeat right -330px bottom -375px, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%);
+        background: url("/src/pages/MainPage/img/main-background-second.svg") no-repeat left -200px bottom -250px, url("/src/pages/MainPage/img/main-background-first.svg") no-repeat right -330px bottom -375px, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%);
         padding-top: 111px;
     }
 
@@ -115,6 +115,6 @@
 
 @media screen and (min-width: 1120px) {
     .wrapper {
-        background: url("/src/components/MainPage/img/main-background-second.svg") no-repeat left -175px bottom -100px, url("/src/components/MainPage/img/main-background-first.svg") no-repeat right -270px bottom -180px, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%);
+        background: url("/src/pages/MainPage/img/main-background-second.svg") no-repeat left -175px bottom -100px, url("/src/pages/MainPage/img/main-background-first.svg") no-repeat right -270px bottom -180px, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%);
     }
 }

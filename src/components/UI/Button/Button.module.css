@@ -1,0 +1,30 @@
+.wrapper {
+    background: #8134E1;
+    border-radius: 30px;
+
+    height: 44px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #FFFFFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.disabled {
+    border: 1px solid #B7B7B7;
+    border-radius: 30px;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    font-family: 'Montserrat', sans-serif;
+    color: #B7B7B7;
+}
