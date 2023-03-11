@@ -4,9 +4,11 @@ import Header from "../../components/Header/Header";
 import TextInput from "../../components/UI/TextInput/TextInput";
 import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import Button from "../../components/UI/Button/Button";
+import Radio from "../../components/UI/Radio/Radio";
 
 const ApplicationPage = () => {
     const [permission, setPermission] = useState(false)
+    const [selected, setSelected] = useState('мужской')
 
     return (
         <div className={cl.wrapper}>
@@ -59,6 +61,10 @@ const ApplicationPage = () => {
                     text: ', необходимые для участия в Чемпионате'
                 }
             ]} checked={permission} setChecked={setPermission}/>
+            <Radio required={true} label={'Пол'} content={[
+                'мужской',
+                'женский'
+            ]} selected={selected} setSelected={setSelected}/>
             <Button placeholder={'Перейти к заполнению профиля'}/>
         </div>
     );
