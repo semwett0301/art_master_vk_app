@@ -1,13 +1,17 @@
 import React from 'react';
 import {AdaptivityProvider, AppRoot, ConfigProvider} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
-import MainPage from "./components/MainPage/MainPage";
+import MainPage from "./pages/MainPage/MainPage";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import EndPage from "./components/EndPage/EndPage";
+import EndPage from "./pages/EndPage/EndPage";
 
 export const router = createBrowserRouter([
     {
         path: '/',
+        element: <MainPage/>
+    },
+    {
+        path: '/success',
         element: <EndPage/>
     }
 ])
