@@ -1,0 +1,118 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+
+    min-height: fit-content;
+
+    box-sizing: border-box;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    padding-bottom: 102px;
+
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.description {
+    font-family: 'Montserrat', serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+    text-align: center;
+
+    margin-bottom: 18px;
+}
+
+.submit {
+    font-family: 'Montserrat', serif;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+
+    margin-bottom: 47px;
+}
+
+.buttonWrapper {
+    display: flex;
+    flex-direction: column;
+
+    height: 100px;
+    width: 205px;
+}
+
+.button {
+    border-radius: 30px;
+
+    height: 44px;
+    width: 100%;
+
+    font-family: 'Montserrat', serif;
+    font-weight: 900;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.buttonMore {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    background-color: rgba(0, 0, 0, 0);
+
+    color: rgba(255, 255, 255, 0.7);
+
+    margin-bottom: 12px;
+}
+
+.buttonContinue {
+    border: 0;
+
+    background-color: #FFFFFF;
+
+    color: #8134E1;
+}
+
+@media screen and (max-width: 501px) {
+    .wrapper {
+        background: url("/src/components/MainPage/img/main-background-first.svg") no-repeat center 60vh, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%) no-repeat;
+        padding-top: 103px;
+        padding-bottom: 289px;
+    }
+
+    .logo {
+        width: 315px;
+        height: 147px;
+    }
+
+    .description {
+        width: 317px;
+        margin-bottom: 14px;
+    }
+
+    .submit {
+        margin-bottom: 52px;
+        width: 253px;
+    }
+}
+
+@media screen and (min-width: 502px) {
+    .wrapper {
+        background: url("/src/components/MainPage/img/main-background-second.svg") no-repeat left -200px bottom -250px, url("/src/components/MainPage/img/main-background-first.svg") no-repeat right -330px bottom -375px, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%);
+        padding-top: 111px;
+    }
+
+    .description {
+        width: 485px;
+    }
+}
+
+@media screen and (min-width: 1120px) {
+    .wrapper {
+        background: url("/src/components/MainPage/img/main-background-second.svg") no-repeat left -175px bottom -100px, url("/src/components/MainPage/img/main-background-first.svg") no-repeat right -270px bottom -180px, linear-gradient(304.51deg, rgba(48, 47, 237, 0.92) 18.86%, #8134E2 44.11%, rgba(220, 20, 59, 0.72) 89.04%);
+    }
+}
