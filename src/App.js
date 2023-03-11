@@ -14,7 +14,7 @@ export const router = createBrowserRouter([
         element: <MainPage/>
     },
     {
-        path: '/success',
+        path: '/end',
         element: <EndPage/>
     },
     {
@@ -28,6 +28,10 @@ export const router = createBrowserRouter([
     {
         path: '/profile',
         element: <ProfilePage/>
+    },
+    {
+        path: '*',
+        element: <MainPage/>
     }
 ])
 
