@@ -28,3 +28,9 @@
     font-family: 'Montserrat', sans-serif;
     color: #B7B7B7;
 }
+
+@media screen and (max-width: 375px){
+    .wrapper {
+        font-size: 14px;
+    }
+}

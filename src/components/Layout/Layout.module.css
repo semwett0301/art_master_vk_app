@@ -15,16 +15,17 @@
 .content {
     display: flex;
     justify-content: space-between;
-    width: 100%;
 
-    margin-top: 24px;
+    max-width: 718px;
+
+    margin: 24px auto 0 auto;
 }
 
 .contentBlock {
     display: flex;
     flex-direction: column;
 
-    width: 351px;
+    width: 49%;
 }
 
 .contentBlock > * {
@@ -36,8 +37,9 @@
 }
 
 .button {
-    margin-top: 51px;
-    margin-bottom: 51px;
+    width: 355px;
+
+    margin: 41px auto 62px auto;
 }
 
 @media screen and (max-width: 749px){
@@ -45,5 +47,17 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
+
+        width: 100%;
+    }
+
+    .contentBlock {
+        width: 100%;
+    }
+
+    .button {
+        width: 100%;
+
+        margin: 15px auto 51px auto;
     }
 }
