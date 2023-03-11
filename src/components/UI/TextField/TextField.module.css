@@ -1,0 +1,49 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+}
+
+.textField {
+    height: 184px;
+
+    background: #FFFFFF;
+    border: 1px solid #D8E3EC;
+    border-radius: 4px;
+
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #373F4B;
+
+    padding-left: 16px;
+    padding-top: 13px;
+}
+
+.textField::placeholder {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 20px;
+
+    color: #B7B7B7;
+}
+
+.textField:active, :hover, :focus {
+    outline: 0;
+    outline-offset: 0;
+}
+
+.textFieldError {
+    border: 1px solid #DC143B;
+    box-shadow: 0 0 8px rgba(220, 20, 59, 0.3);
+}
+
+.textFieldEmpty {
+    border: 1px solid #FF6800;
+    box-shadow: 0 0 8px #FF6800;
+}

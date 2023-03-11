@@ -5,6 +5,7 @@ import TextInput from "../../components/UI/TextInput/TextInput";
 import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import Button from "../../components/UI/Button/Button";
 import Radio from "../../components/UI/Radio/Radio";
+import TextField from "../../components/UI/TextField/TextField";
 
 const ApplicationPage = () => {
     const [permission, setPermission] = useState(false)
@@ -66,6 +67,7 @@ const ApplicationPage = () => {
                 'женский'
             ]} selected={selected} setSelected={setSelected}/>
             <Button placeholder={'Перейти к заполнению профиля'}/>
+            <TextField required={true} label={'Вопрос'} placeholder={'Длинное текстовое поле'} />
         </div>
     );
 };
