@@ -6,6 +6,8 @@ import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import Button from "../../components/UI/Button/Button";
 import Radio from "../../components/UI/Radio/Radio";
 import TextField from "../../components/UI/TextField/TextField";
+import FilePicker from "../../components/UI/FilePicker/FilePicker";
+import icon from '../../components/UI/FilePicker/img/paper-clip.svg'
 
 const ApplicationPage = () => {
     const [permission, setPermission] = useState(false)
@@ -66,8 +68,12 @@ const ApplicationPage = () => {
                 'мужской',
                 'женский'
             ]} selected={selected} setSelected={setSelected}/>
-            <Button placeholder={'Перейти к заполнению профиля'}/>
-            <TextField required={true} label={'Вопрос'} placeholder={'Длинное текстовое поле'} />
+            <TextField required={true} label={'Вопрос'} placeholder={'Длинное текстовое поле'}/>
+            <FilePicker className={cl.testWrapper} label={'Скан паспорта'} id={'scan_passport'} required={true} buttonLabel={'Загрузить'}
+                        instruction={'До 10 файлов (общий размер - до 20 Мб)'}
+                        description={'Или иные документы, согласно пунктам 2.4 Приложения №1 и №2 к Положению о Чемпионате. Допустимый формат: jpg, png, pdf'}
+                        imgSrc={icon}/>
+            {/*<Button placeholder={'Перейти к заполнению профиля'}/>*/}
         </div>
     );
 };

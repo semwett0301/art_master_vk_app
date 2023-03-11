@@ -46,3 +46,7 @@
     border: 1px solid #FF6800;
     box-shadow: 0 0 8px #FF6800;
 }
+
+.textFieldComplete {
+    border: 1px solid #E6D1FF;
+}

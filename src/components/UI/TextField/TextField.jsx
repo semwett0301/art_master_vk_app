@@ -4,17 +4,26 @@ import InputHeader from "../modules/InputHeader/InputHeader";
 import {classJoiner} from "../../../utils/classJoiner";
 
 
-const TextInput = ({label, description, placeholder, required, errorMessage, emptyMessage, className}) => {
+const TextField = ({
+                       label,
+                       description,
+                       placeholder,
+                       required,
+                       errorMessage,
+                       emptyMessage,
+                       completeMessage,
+                       className
+                   }) => {
     return (
         <div className={classJoiner(cl.wrapper, className)}>
             <InputHeader required={required} label={label} description={description} emptyMessage={emptyMessage}
-                         errorMessage={errorMessage}/>
+                         errorMessage={errorMessage} completeMessage={completeMessage}/>
             <textarea
-                className={classJoiner(cl.textField, errorMessage ? cl.textFieldError : emptyMessage ? cl.textFieldError : '')}
+                className={classJoiner(cl.textField, errorMessage ? cl.textFieldError : emptyMessage ? cl.textFieldError : completeMessage ? completeMessage : '')}
                 placeholder={placeholder}
             />
         </div>
     );
 };
 
-export default TextInput;
+export default TextField;

@@ -13,6 +13,10 @@
     color: #FF6800;
 }
 
+.nameComplete {
+    color: #8134E1
+}
+
 .nameWrapper {
     display: flex;
     justify-content: space-between;

@@ -1,0 +1,66 @@
+.header {
+    margin-bottom: 2px;
+}
+
+.description {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #373F4B;
+
+    margin-bottom: 11px;
+}
+
+.input {
+    width: 0;
+    height: 0;
+}
+
+.inputWrapper {
+    display: flex;
+    align-items: center;
+}
+
+.inputBlockWrapper {
+    margin-right: 11px;
+}
+
+.inputLabel {
+    background: #FFFFFF;
+    border: 1px solid #D8E3EC;
+    border-radius: 4px;
+
+    width: 165px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+
+    padding-left: 24px;
+
+    color: #373F4B;
+
+    user-select: none;
+    cursor: pointer;
+}
+
+.logo {
+    margin-right: 8px;
+}
+
+.instruction {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #7A818B;
+}
