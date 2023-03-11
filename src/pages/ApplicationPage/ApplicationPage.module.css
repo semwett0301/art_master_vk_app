@@ -3,9 +3,47 @@
 
     padding-right: 17px;
     padding-left: 17px;
-    padding-top: 24px;
+
+    min-height: 100vh;
+    overflow: hidden;
 }
 
-.testWrapper {
-    width: 348px;
+.header {
+    margin-top: 24px;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    margin-top: 24px;
+}
+
+.contentBlock {
+    display: flex;
+    flex-direction: column;
+
+    width: 351px;
+}
+
+.contentBlock > * {
+    margin-bottom: 13px;
+}
+
+.contentBlock > *:last-child {
+    margin-bottom: 0;
+}
+
+.button {
+    margin-top: 51px;
+    margin-bottom: 51px;
+}
+
+@media screen and (max-width: 749px){
+    .content {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
 }

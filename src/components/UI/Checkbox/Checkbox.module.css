@@ -1,6 +1,6 @@
 .wrapper {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
 
     user-select: none;
 }
@@ -10,6 +10,7 @@
     height: 30px;
 
     margin-right: 13px;
+    margin-top: 5px;
 }
 
 .input {
