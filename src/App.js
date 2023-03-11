@@ -5,6 +5,8 @@ import MainPage from "./pages/MainPage/MainPage";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import EndPage from "./pages/EndPage/EndPage";
 import ApplicationPage from "./pages/ApplicationPage/ApplicationPage";
+import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 export const router = createBrowserRouter([
     {
@@ -18,6 +20,14 @@ export const router = createBrowserRouter([
     {
         path: '/application',
         element: <ApplicationPage/>
+    },
+    {
+        path: '/portfolio',
+        element: <PortfolioPage/>
+    },
+    {
+        path: '/profile',
+        element: <ProfilePage/>
     }
 ])
 

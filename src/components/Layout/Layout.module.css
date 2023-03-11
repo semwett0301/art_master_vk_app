@@ -16,9 +16,14 @@
     display: flex;
     justify-content: space-between;
 
-    max-width: 718px;
+    width: 718px;
 
     margin: 24px auto 0 auto;
+}
+
+.singleColumnContent {
+    width: 100%;
+    display: block;
 }
 
 .contentBlock {
@@ -26,6 +31,10 @@
     flex-direction: column;
 
     width: 49%;
+}
+
+.singleColumnContentBlock {
+    width: 100%;
 }
 
 .contentBlock > * {
@@ -53,6 +62,10 @@
 
     .contentBlock {
         width: 100%;
+    }
+
+    .contentBlock:first-child {
+        margin-bottom: 13px;
     }
 
     .button {
