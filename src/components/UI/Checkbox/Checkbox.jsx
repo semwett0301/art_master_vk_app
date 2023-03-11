@@ -20,7 +20,7 @@ const Checkbox = ({content, isError, checked, setChecked}) => {
                             return <span key={element.id}>{element.text}</span>
                         } else if (element.type === 'link') {
                             return <a href={element.link} key={element.id}><span
-                                className={cl.linkContent}>{element.text}</span></a>
+                                className={cl.linkContent} key={element.id}>{element.text}</span></a>
                         }
                     })
                 }

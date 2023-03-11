@@ -41,3 +41,9 @@
 
     color: #373F4B;
 }
+
+@media screen and (max-width: 375px){
+    .text {
+        font-size: 14px;
+    }
+}

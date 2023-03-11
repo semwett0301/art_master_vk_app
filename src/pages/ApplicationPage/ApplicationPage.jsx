@@ -2,22 +2,29 @@ import React, {useState} from 'react';
 import TextInput from "../../components/UI/TextInput/TextInput";
 import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import Layout from "../../components/Layout/Layout";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const ApplicationPage = () => {
     const [dataPermission, setDataPermission] = useState(false)
     const [codexPermission, setCodexPermission] = useState(false)
 
+    const navigate = useNavigate()
+    const location = useLocation()
+
     return (
-        <Layout buttonPlaceholder={'Перейти к заполнению профиля'} firstColumn={[
-            <TextInput required label={'Имя'} placeholder={'Например, Иван'} description={'Как в паспорте'} />,
-            <TextInput required label={'Фамилия'} placeholder={'Например, Иванов'} description={'Как в паспорте'} />,
-            <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'} />,
-            <TextInput required label={'Компетенция'} placeholder={'не выбрано'} />,
-            <TextInput required label={'Гражданство'} placeholder={'не выбрано'} />
+        <Layout buttonPlaceholder={'Перейти к заполнению профиля'} headerText={'Заявка'}
+                submitFunction={() => navigate('/profile', {
+                    location: location
+                })} firstColumn={[
+            <TextInput required label={'Имя'} placeholder={'Например, Иван'} description={'Как в паспорте'}/>,
+            <TextInput required label={'Фамилия'} placeholder={'Например, Иванов'} description={'Как в паспорте'}/>,
+            <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'}/>,
+            <TextInput required label={'Компетенция'} placeholder={'не выбрано'}/>,
+            <TextInput required label={'Гражданство'} placeholder={'не выбрано'}/>
         ]} secondColumn={[
-            <TextInput required label={'Место проживания'} placeholder={'Начните вводить название'} />,
-            <TextInput required label={'Компетенция'} placeholder={'+7 (999) 999-99-99'} />,
-            <TextInput required label={'Гражданство'} placeholder={'info@artmasters.ru'} />,
+            <TextInput required label={'Место проживания'} placeholder={'Начните вводить название'}/>,
+            <TextInput required label={'Компетенция'} placeholder={'+7 (999) 999-99-99'}/>,
+            <TextInput required label={'Гражданство'} placeholder={'info@artmasters.ru'}/>,
             <Checkbox content={[
                 {
                     id: 1,

@@ -64,3 +64,9 @@
 
     color: #7A818B;
 }
+
+@media screen and (max-width: 375px){
+    .instruction {
+        font-size: 9px;
+    }
+}

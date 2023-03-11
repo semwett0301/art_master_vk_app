@@ -5,7 +5,7 @@ import cl from './Radio.module.css'
 const Radio = ({required, label, content, selected, setSelected, className}) => {
     return (
         <div className={className}>
-            <InputHeader required={required} label={label}/>
+            <InputHeader required={required} label={label} className={cl.header}/>
             <div className={cl.wrapper}>
                 {
                     content.map(text => <div className={cl.labelWrapper}>
