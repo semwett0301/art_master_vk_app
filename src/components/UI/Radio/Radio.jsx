@@ -8,7 +8,7 @@ const Radio = ({required, label, content, selected, setSelected, className}) => 
             <InputHeader required={required} label={label} className={cl.header}/>
             <div className={cl.wrapper}>
                 {
-                    content.map(text => <div className={cl.labelWrapper}>
+                    content.map(text => <div key={text} className={cl.labelWrapper}>
                         <div className={cl.label} onClick={() => {
                             selected !== text && setSelected(text)
                         }}>

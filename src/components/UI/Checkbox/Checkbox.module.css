@@ -63,3 +63,13 @@
         font-size: 14px;
     }
 }
+
+@media screen and (min-width: 472px) and (max-width: 749px){
+    .wrapper {
+        align-items: center;
+    }
+
+    .checkboxWrapper {
+        margin-top: 0;
+    }
+}
