@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
 
 const App = () => {
     return (
-        <ConfigProvider>
+        <ConfigProvider appearance="light">
             <AdaptivityProvider>
                 <AppRoot>
                     <RouterProvider router={router}/>

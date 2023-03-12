@@ -10,7 +10,7 @@ const EndPage = () => {
             </div>
 
             <div className={cl.linkTextWrapper}>
-                <div className={cl.linkText}>Перейти в официальное сообщество</div>
+                <a href={'https://vk.com/artmasters'} className={cl.link}><div className={cl.linkText}>Перейти в официальное сообщество</div></a>
             </div>
         </div>
     );

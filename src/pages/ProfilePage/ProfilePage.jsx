@@ -6,6 +6,7 @@ import Layout from "../../components/Layout/Layout";
 import fileLogo from '../../components/UI/FilePicker/img/paper-clip.svg'
 import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import {useLocation, useNavigate} from "react-router-dom";
+import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 
 const ProfilePage = () => {
     const [sex, setSex] = useState('мужской')
@@ -31,14 +32,14 @@ const ProfilePage = () => {
                         description={'Или иные документы, согласно пунктам 2.4 Приложения №1 и №2 к Положению о Чемпионате. Допустимый формат: jpg, png, pdf'}
                         imgSrc={fileLogo} buttonLabel={'Загрузить'}
                         instruction={'До 10 файлов (общий размер - до 20 Мб)'} inputRef={passport}/>,
-            <TextInput label={'Обр  азование'} placeholder={'не выбрано'}/>,
+            <CustomSelect label={'Образование'} placeholder={'не выбрано'}/>,
             <TextInput label={'Место работы'} placeholder={'Например, ООО “Рога и копыта”'}/>,
         ]} secondColumn={[
             <TextInput label={'Должность'} placeholder={'Младший помощник ст. технички'}/>,
             <TextInput label={'Место учебы'} placeholder={'Колледж имени Петросяна'}/>,
             <TextInput label={'VK'} placeholder={'vk.com/.......................'}/>,
             <TextInput label={'Telegram'} placeholder={'@name'}/>,
-            <TextInput label={'Откуда узнали о Чемпионате'} placeholder={'не выбрано'}/>,
+            <CustomSelect label={'Откуда узнали о Чемпионате'} placeholder={'не выбрано'}/>,
             <Checkbox content={[
                 {
                     type: 'text',

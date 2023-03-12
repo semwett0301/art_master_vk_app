@@ -3,10 +3,13 @@ import TextInput from "../../components/UI/TextInput/TextInput";
 import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import Layout from "../../components/Layout/Layout";
 import {useLocation, useNavigate} from "react-router-dom";
+import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 
 const ApplicationPage = () => {
     const [dataPermission, setDataPermission] = useState(false)
     const [codexPermission, setCodexPermission] = useState(false)
+
+    const [competition, setCompetition] = useState(null)
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -19,8 +22,15 @@ const ApplicationPage = () => {
             <TextInput required label={'Имя'} placeholder={'Например, Иван'} description={'Как в паспорте'}/>,
             <TextInput required label={'Фамилия'} placeholder={'Например, Иванов'} description={'Как в паспорте'}/>,
             <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'}/>,
-            <TextInput required label={'Компетенция'} placeholder={'не выбрано'}/>,
-            <TextInput required label={'Гражданство'} placeholder={'не выбрано'}/>
+            <CustomSelect required label={'Компетенция'} placeholder={'не выбрано'} options={[
+                {
+                    label: 'ABC'
+                },
+                {
+                    label: 'DDD'
+                }
+            ]} selectedOption={competition} setSelectedOption={setCompetition}/>,
+            <CustomSelect required label={'Гражданство'} placeholder={'не выбрано'}/>
         ]} secondColumn={[
             <TextInput required label={'Место проживания'} placeholder={'Начните вводить название'}/>,
             <TextInput required label={'Компетенция'} placeholder={'+7 (999) 999-99-99'}/>,
