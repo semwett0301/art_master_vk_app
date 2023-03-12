@@ -10,6 +10,7 @@ const CustomSelect = ({
                           required,
                           placeholder,
                           description,
+                          failDescription,
                           emptyMessage,
                           completeMessage,
                           className,
@@ -40,7 +41,7 @@ const CustomSelect = ({
                     </div>
                 }
             </div>
-            <div className={cl.description}>{description}</div>
+            <div className={classJoiner(cl.description, failDescription && cl.failDescription)}>{description}</div>
         </div>
     );
 };
