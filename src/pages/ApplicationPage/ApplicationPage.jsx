@@ -29,7 +29,8 @@ const ApplicationPage = () => {
                 {
                     label: 'DDD'
                 }
-            ]} selectedOption={competition} setSelectedOption={setCompetition}/>,
+            ]} selectedOption={competition} setSelectedOption={setCompetition}
+                          description={'Перед выбором компетенции укажите дату рождения'}/>,
             <CustomSelect required label={'Гражданство'} placeholder={'не выбрано'}/>
         ]} secondColumn={[
             <TextInput required label={'Место проживания'} placeholder={'Начните вводить название'}/>,

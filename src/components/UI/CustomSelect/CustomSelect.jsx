@@ -9,6 +9,7 @@ const CustomSelect = ({
                           label,
                           required,
                           placeholder,
+                          description,
                           emptyMessage,
                           completeMessage,
                           className,
@@ -39,6 +40,7 @@ const CustomSelect = ({
                     </div>
                 }
             </div>
+            <div className={cl.description}>{description}</div>
         </div>
     );
 };

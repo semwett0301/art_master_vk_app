@@ -91,3 +91,16 @@
 .itemText {
     margin-left: 8px;
 }
+
+.description {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #7A818B;
+
+    width: 100%;
+    margin-top: 3px;
+}

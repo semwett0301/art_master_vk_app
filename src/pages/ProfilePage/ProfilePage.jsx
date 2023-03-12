@@ -46,7 +46,7 @@ const ProfilePage = () => {
                     text: 'Хочу участвовать в командных соревнованиях'
                 }
             ]} checked={wantParticipate} setChecked={setWantParticipate}/>,
-            <TextInput label={'Направление командных соревнований'} placeholder={'не выбрано'}/>
+            <CustomSelect label={'Направление командных соревнований'} placeholder={'не выбрано'}/>
         ]}/>
     );
 }
