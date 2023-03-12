@@ -1,6 +1,9 @@
 {
   "static_path": "build",
-  "app_id": 0,
+  "app_id": 51552965,
+  "odr_enabled": 0,
+  "version": "0.0.1",
+  "access_token": "2df42e942df42e942df42e94e42ee68c5122df42df42e9449ffa69c5ce83c52e38aca1b",
   "endpoints": {
     "mobile": "index.html",
     "mvk": "index.html",

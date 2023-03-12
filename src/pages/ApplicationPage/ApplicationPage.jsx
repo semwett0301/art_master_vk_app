@@ -14,14 +14,18 @@ const ApplicationPage = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
+    const [name, setName] = useState('')
+    const [surname, setSurname] = useState('')
+    const [birthdayDate, setBirthdayDate] = useState('')
+
     return (
         <Layout buttonPlaceholder={'Перейти к заполнению профиля'} headerText={'Заявка'}
                 submitFunction={() => navigate('/profile', {
                     location: location
                 })} firstColumn={[
-            <TextInput required label={'Имя'} placeholder={'Например, Иван'} description={'Как в паспорте'}/>,
-            <TextInput required label={'Фамилия'} placeholder={'Например, Иванов'} description={'Как в паспорте'}/>,
-            <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'}/>,
+            <TextInput required label={'Имя'} placeholder={'Например, Иван'} description={'Как в паспорте'} value={name} onInput={setName}/>,
+            <TextInput required label={'Фамилия'} placeholder={'Например, Иванов'} description={'Как в паспорте'} value={surname} onInput={setSurname}/>,
+            <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'} value={birthdayDate} onInput={setBirthdayDate}/>,
             <CustomSelect required label={'Компетенция'} placeholder={'не выбрано'} options={[
                 {
                     label: 'ABC'
