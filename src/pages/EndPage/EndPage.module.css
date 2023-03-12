@@ -41,6 +41,7 @@
     color: #FFFFFF;
 }
 
+
 .boldText {
     font-weight: 900;
 }
@@ -64,5 +65,14 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
+@media screen and (max-width: 501px) {
+    .mainContentWrapper {
+        font-size: 26px;
+    }
+
+    .linkText {
+        font-size: 14px;
+    }
+}
 
 
