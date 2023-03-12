@@ -27,11 +27,11 @@ const ProfilePage = () => {
                 'мужской',
                 'женский'
             ]}/>,
-            <FilePicker id={'passport_photo'} label={'Скан паспорта'} required
+            <FilePicker id={'file'} label={'Скан паспорта'} required
                         description={'Или иные документы, согласно пунктам 2.4 Приложения №1 и №2 к Положению о Чемпионате. Допустимый формат: jpg, png, pdf'}
                         imgSrc={fileLogo} buttonLabel={'Загрузить'}
                         instruction={'До 10 файлов (общий размер - до 20 Мб)'} inputRef={passport}/>,
-            <TextInput label={'Образование'} placeholder={'не выбрано'}/>,
+            <TextInput label={'Обр  азование'} placeholder={'не выбрано'}/>,
             <TextInput label={'Место работы'} placeholder={'Например, ООО “Рога и копыта”'}/>,
         ]} secondColumn={[
             <TextInput label={'Должность'} placeholder={'Младший помощник ст. технички'}/>,

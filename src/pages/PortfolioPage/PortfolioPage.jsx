@@ -16,7 +16,7 @@ const PortfolioPage = () => {
         })} firstColumn={[
             <TextInput label={'Вопрос'} placeholder={'Ваш вопрос'}/>,
             <TextField label={'Вопрос'} placeholder={'Ваш вопрос'}/>,
-            <FilePicker label={'Загрузите файл'} imgSrc={fileLogo} buttonLabel={'Выбрать'}/>
+            <FilePicker id={'choice'} label={'Загрузите файл'} imgSrc={fileLogo} buttonLabel={'Выбрать'}/>
         ]}/>
     );
 };

@@ -1,7 +1,14 @@
 .wrapper {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+}
+
+.wrapper > * {
+    margin-right: 52px;
+}
+
+.wrapper > *:last-child {
+    margin-right: 0;
 }
 
 .labelWrapper {
