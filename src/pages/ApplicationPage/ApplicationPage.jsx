@@ -15,20 +15,10 @@ const ApplicationPage = () => {
     const location = useLocation()
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
-        mode: 'all',
-        defaultValues: {
-            name: '',
-            surname: '',
-            birth_date: '',
-            place_of_living: '',
-            phone: '',
-            email: '',
-            data_permission: false,
-            codex_permission: false
-        }
+        mode: 'all'
     })
 
-    const dateOfBirth = watch('birth_date')
+    const dateOfBirth = watch('birthdate')
 
     console.log(toOptionsList(citizenship))
 
@@ -70,7 +60,7 @@ const ApplicationPage = () => {
                     })
                 })}
                 firstColumn={[
-                    <Controller control={control} name={'name'} rules={
+                    <Controller control={control} name={'first_name'} rules={
                         {
                             required: 'Поле обязательно'
                         }
@@ -86,7 +76,7 @@ const ApplicationPage = () => {
                                                errorMessage={error?.type !== 'required' ? error?.message : undefined}/>
                                 }>
                     </Controller>,
-                    <Controller control={control} name={'surname'} rules={
+                    <Controller control={control} name={'last_name'} rules={
                         {
                             required: 'Поле обязательно'
                         }
@@ -101,7 +91,7 @@ const ApplicationPage = () => {
                                     />
                                 }>
                     </Controller>,
-                    <Controller control={control} name={'birth_date'} rules={
+                    <Controller control={control} name={'birthdate'} rules={
                         {
                             required: 'Поле обязательно',
                             validate: value => {
@@ -141,21 +131,21 @@ const ApplicationPage = () => {
                                                   label={'Компетенция'}
                                                   placeholder={'не выбрано'}
                                                   description={'Перед выбором компетенции укажите дату рождения'}
-                                                  failDescription={formState.errors?.birth_date}
+                                                  failDescription={formState.errors?.birthdate}
                                                   selectedOption={value}
                                                   setSelectedOption={onChange}
                                                   isEmpty={error?.type === 'required'}
                                                   isComplete={!invalid && isDirty}
                                                   onClick={() => {
-                                                      if (!formState.errors?.birth_date && !formState.dirtyFields?.birth_date) {
-                                                          setError('birth_date', {
+                                                      if (!formState.errors?.birthdate && !formState.dirtyFields?.birthdate) {
+                                                          setError('birthdate', {
                                                               type: 'required',
                                                               message: 'Заполните поле'
                                                           })
                                                       }
                                                   }}
                                                   options={competition}/>}
-                                name={'competition'}/>,
+                                name={'category'}/>,
                     <Controller control={control} rules={
                         {
                             required: 'Заполните поле'
@@ -173,7 +163,7 @@ const ApplicationPage = () => {
                                     />}
                                 name={'citizenship'}/>,
                 ]} secondColumn={[
-            <Controller control={control} name={'place_of_living'} rules={
+            <Controller control={control} name={'region'} rules={
                 {
                     required: 'Поле обязательно',
                     pattern: {
@@ -243,7 +233,7 @@ const ApplicationPage = () => {
                                 text: 'персональных данных',
                                 link: 'https://localhost:10888/'
                             }
-                        ]} checked={value} setChecked={onChange} isError={error}/>} name={'data_permission'}/>,
+                        ]} checked={value} setChecked={onChange} isError={error}/>} name={'agree1'}/>,
 
             <Controller control={control}
                         rules={
@@ -279,7 +269,7 @@ const ApplicationPage = () => {
                                 type: 'text',
                                 text: ', необходимые для участия в Чемпионате'
                             }
-                        ]} checked={value} setChecked={onChange} isError={error}/>} name={'codex_permission'}/>
+                        ]} checked={value} setChecked={onChange} isError={error}/>} name={'agree2'}/>
         ]}
         />)
 }
