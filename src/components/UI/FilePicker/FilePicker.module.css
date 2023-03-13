@@ -27,6 +27,20 @@
     margin-right: 11px;
 }
 
+.textFieldError {
+    border: 1px solid #DC143B;
+    box-shadow: 0 0 8px rgba(220, 20, 59, 0.3);
+}
+
+.textFieldEmpty {
+    border: 1px solid #FF6800;
+    box-shadow: 0 0 8px #FF6800;
+}
+
+.textFieldComplete {
+    border: 1px solid #E6D1FF;
+}
+
 .inputLabel {
     background: #FFFFFF;
     border: 1px solid #D8E3EC;

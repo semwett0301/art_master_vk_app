@@ -13,7 +13,13 @@ const FilePicker = ({
                         imgSrc,
                         instruction,
                         inputRef,
-                        onInput
+                        onInput,
+                        errorMessage,
+                        emptyMessage,
+                        completeMessage,
+                        isError,
+                        isEmpty,
+                        isComplete
                     }) => {
 
     const [currentInstruction, setCurrentInstruction] = useState('')
@@ -26,13 +32,31 @@ const FilePicker = ({
         }
     }, [])
 
+    const wrapperClass = useMemo(() => {
+        if (errorMessage || isError) {
+            return cl.textFieldError
+        } else {
+            if (emptyMessage || isEmpty) {
+                return cl.textFieldEmpty
+            } else {
+                if (completeMessage || isComplete) {
+                    return cl.textFieldComplete
+                } else {
+                    return ''
+                }
+            }
+        }
+    }, [errorMessage, emptyMessage, isEmpty, isError, isComplete])
+
     useEffect(() => {
         resetInstruction()
     }, [])
 
     return (
         <div className={className}>
-            <InputHeader required={required} label={label} className={cl.header}/>
+            <InputHeader required={required} label={label} className={cl.header} isComplete={isComplete}
+                         isEmpty={isEmpty} isError={isError} emptyMessage={emptyMessage}
+                         completeMessage={completeMessage} errorMessage={errorMessage}/>
             <div className={cl.description}>
                 {description}
             </div>
@@ -42,7 +66,7 @@ const FilePicker = ({
                         onInput && onInput()
                         resetInstruction()
                     }}/>
-                    <label for={id} className={cl.inputLabel}>
+                    <label for={id} className={classJoiner(cl.inputLabel, wrapperClass)}>
                         {imgSrc && <img src={imgSrc} alt={'Иконка'} className={cl.logo}/>}
                         <span>{buttonLabel}</span>
                     </label>

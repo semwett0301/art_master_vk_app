@@ -8,17 +8,23 @@ import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import {useLocation, useNavigate} from "react-router-dom";
 import CustomSelect from "../../components/UI/CustomSelect/CustomSelect";
 import {Controller, useForm} from "react-hook-form";
+import toOptionsList from "../../utils/toOptionsList";
+import citizenship from "../ApplicationPage/model/citizenship";
+import education from "./model/education";
+import from from "./model/from";
+import directions from "./model/directions";
 
 const ProfilePage = () => {
-    const [sex, setSex] = useState('мужской')
-    const [wantParticipate, setWantParticipate] = useState(false)
     const passport = useRef()
 
     const navigate = useNavigate()
     const location = useLocation()
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
-        mode: 'all'
+        mode: 'all',
+        defaultValues: {
+            sex: 'мужской'
+        }
     })
 
     const onSubmit = useCallback(() => {
@@ -70,15 +76,55 @@ const ProfilePage = () => {
                             />
                         }>
             </Controller>,
-            <Radio label={'Пол'} required selected={sex} setSelected={setSex} content={[
-                'мужской',
-                'женский'
-            ]}/>,
-            <FilePicker id={'file'} label={'Скан паспорта'} required
-                        description={'Или иные документы, согласно пунктам 2.4 Приложения №1 и №2 к Положению о Чемпионате. Допустимый формат: jpg, png, pdf'}
-                        imgSrc={fileLogo} buttonLabel={'Загрузить'}
-                        instruction={'До 10 файлов (общий размер - до 20 Мб)'} inputRef={passport}/>,
-            <CustomSelect label={'Образование'} placeholder={'не выбрано'}/>,
+            <Controller control={control} name={'sex'}
+                        rules={
+                            {
+                                required: true
+                            }
+                        }
+                        render={({field: {onChange, value}}) =>
+                            <Radio label={'Пол'} required selected={value} setSelected={onChange} content={[
+                                'мужской',
+                                'женский'
+                            ]}/>
+                        }>
+            </Controller>,
+            <Controller control={control} name={'passport'}
+                        rules={
+                            {
+                                required: true
+                            }
+                        }
+                        render={({field: {onChange, value}, fieldState: {invalid, isDirty, error}}) =>
+                            <FilePicker id={'file'} label={'Скан паспорта'} required
+                                        description={'Или иные документы, согласно пунктам 2.4 Приложения №1 и №2 к Положению о Чемпионате. Допустимый формат: jpg, png, pdf'}
+                                        imgSrc={fileLogo} buttonLabel={'Загрузить'}
+                                        instruction={'До 10 файлов (общий размер - до 20 Мб)'} inputRef={passport}
+                                        onInput={
+                                            () => {
+                                                onChange(passport.current.files?.length !== 0 ? passport.current.files : undefined)
+                                            }
+                                        }
+                                        isEmpty={error?.type === 'required'}
+                                        isComplete={!invalid && isDirty && value !== undefined}/>
+                        }>
+            </Controller>,
+            <Controller control={control} rules={
+                {
+                    required: 'Заполните поле'
+                }
+            }
+                        render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) =>
+                            <CustomSelect required
+                                          label={'Образование'}
+                                          placeholder={'не выбрано'}
+                                          selectedOption={value}
+                                          setSelectedOption={onChange}
+                                          options={toOptionsList(education)}
+                                          isEmpty={error?.type === 'required'}
+                                          isComplete={!invalid && isDirty}
+                            />}
+                        name={'education'}/>,
             <Controller control={control} name={'work'}
                         render={({field: {onChange, value}, fieldState: {error, isDirty, invalid}}) =>
                             <TextInput label={'Место работы'} placeholder={'Например, ООО “Рога и копыта”'}
@@ -142,14 +188,36 @@ const ProfilePage = () => {
                             />
                         }>
             </Controller>,
-            <CustomSelect label={'Откуда узнали о Чемпионате'} placeholder={'не выбрано'}/>,
+            <Controller control={control}
+                        render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) =>
+                            <CustomSelect required
+                                          label={'Откуда узнали о Чемпионате'}
+                                          placeholder={'не выбрано'}
+                                          selectedOption={value}
+                                          setSelectedOption={onChange}
+                                          options={toOptionsList(from)}
+                                          isEmpty={error?.type === 'required'}
+                                          isComplete={!invalid && isDirty}
+                            />}
+                        name={'from'}/>,
             <Controller control={control}
                         render={({field: {onChange, value}}) => <Checkbox content={[
                             {
                                 type: 'text',
                                 text: 'Хочу участвовать в командных соревнованиях'
                             }]} checked={value} setChecked={onChange}/>} name={'agree1'}/>,
-            <CustomSelect label={'Направление командных соревнований'} placeholder={'не выбрано'}/>
+            <Controller control={control}
+                        render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) =>
+                            <CustomSelect required
+                                          label={'Направление командных соревнований'}
+                                          placeholder={'не выбрано'}
+                                          selectedOption={value}
+                                          setSelectedOption={onChange}
+                                          options={toOptionsList(directions)}
+                                          isEmpty={error?.type === 'required'}
+                                          isComplete={!invalid && isDirty}
+                            />}
+                        name={'direction'}/>
         ]}/>
     );
 }
