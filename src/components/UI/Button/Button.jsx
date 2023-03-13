@@ -7,7 +7,9 @@ const Button = ({placeholder, disabled, onClick, className}) => {
         <div className={classJoiner(cl.wrapper, className, disabled ? cl.disabled : '')} onClick={() => {
             !disabled && onClick && onClick()
         }}>
-            <span>{placeholder}</span>
+            <button>
+                <span>{placeholder}</span>
+            </button>
         </div>
     );
 };
