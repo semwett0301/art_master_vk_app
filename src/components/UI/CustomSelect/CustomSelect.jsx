@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo} from 'react';
 import InputHeader from "../modules/InputHeader/InputHeader";
 import cl from './CustomSelect.module.css'
 import {classJoiner} from "../../../utils/classJoiner";
@@ -12,21 +12,36 @@ const CustomSelect = ({
                           description,
                           failDescription,
                           emptyMessage,
+                          isEmpty,
                           completeMessage,
+                          isComplete,
                           className,
                           options,
                           selectedOption,
-                          setSelectedOption
+                          setSelectedOption,
+                          onClick
                       }) => {
     const [isOpen, setIsOpen] = useState(false)
 
+    const wrapperClass = useMemo(() => {
+        if (emptyMessage || isEmpty) {
+            return cl.textFieldEmpty
+        } else {
+            if (completeMessage || isComplete) {
+                return cl.textFieldComplete
+            } else {
+                return ''
+            }
+        }
+    }, [emptyMessage, isEmpty, isComplete])
+
     return (
-        <div className={classJoiner(className, cl.wrapper)}>
+        <div className={classJoiner(className, cl.wrapper)} onClick={onClick}>
             <InputHeader label={label} required={required} emptyMessage={emptyMessage}
-                         completeMessage={completeMessage}/>
+                         completeMessage={completeMessage} isComplete={isComplete} isEmpty={isEmpty}/>
             <div
-                className={classJoiner(cl.textFieldWrapper, cl.textColor, !selectedOption && cl.textFieldPlaceholder, isOpen && cl.openItems)}>
-                <div className={cl.textField} onClick={() => setIsOpen(!isOpen)}>
+                className={classJoiner(cl.textFieldWrapper, cl.textColor, !selectedOption && cl.textFieldPlaceholder, isOpen && cl.openItems, wrapperClass)}>
+                <div className={cl.textField} onClick={() => setIsOpen(!isOpen && options.length !== 0)}>
                     <span>{selectedOption ? selectedOption.label : placeholder}</span>
                     <img src={down} alt={'Вниз'} className={cl.downPicture}/>
                 </div>

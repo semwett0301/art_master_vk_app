@@ -2,23 +2,34 @@ import React, {useMemo} from 'react';
 import cl from "./InputHeader.module.css";
 import {classJoiner} from "../../../../utils/classJoiner";
 
-const InputHeader = ({label, description, required, errorMessage, emptyMessage, completeMessage, className}) => {
+const InputHeader = ({
+                         label,
+                         description,
+                         required,
+                         errorMessage,
+                         isError,
+                         isEmpty,
+                         emptyMessage,
+                         isComplete,
+                         completeMessage,
+                         className
+                     }) => {
 
     const messageClass = useMemo(() => {
-        if (errorMessage) {
+        if (errorMessage || isError) {
             return cl.nameError
         } else {
-            if (emptyMessage) {
+            if (emptyMessage || isEmpty) {
                 return cl.nameEmpty
             } else {
-                if (completeMessage) {
+                if (completeMessage || isComplete) {
                     return cl.nameComplete
                 } else {
                     return ''
                 }
             }
         }
-    }, [errorMessage, emptyMessage])
+    }, [errorMessage, emptyMessage, isEmpty, isError, isComplete])
 
     return (
         <div className={classJoiner(cl.nameWrapper, className)}>
