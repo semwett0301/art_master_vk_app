@@ -20,8 +20,6 @@ const ApplicationPage = () => {
 
     const dateOfBirth = watch('birthdate')
 
-    console.log(toOptionsList(citizenship))
-
     const competition = useMemo(() => {
         const date = moment(dateOfBirth, "DD.MM.YYYY", true)
 
