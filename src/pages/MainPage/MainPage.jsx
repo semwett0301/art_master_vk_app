@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import cl from './MainPage.module.css'
 import logo from './img/main-logo.svg'
 import {classJoiner} from "../../utils/classJoiner";
@@ -18,13 +18,16 @@ const MainPage = () => {
                 </span>
             <span className={cl.submit}>Подача заявок принимается 14 марта - 28 мая</span>
             <div className={cl.buttonWrapper}>
-                <a href={'https://vk.com/artmasters'}><button className={classJoiner(cl.buttonMore, cl.button)}>Перейти в сообщество
-                </button></a>
+                <a href={'https://vk.com/artmasters'}>
+                    <button className={classJoiner(cl.buttonMore, cl.button)}>Перейти в сообщество
+                    </button>
+                </a>
                 <button className={classJoiner(cl.buttonContinue, cl.button)} onClick={() => {
                     navigate('/application', {
                         location: location
                     })
-                }}>Подать заявку</button>
+                }}>Подать заявку
+                </button>
             </div>
         </div>
     );
