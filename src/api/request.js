@@ -1,6 +1,10 @@
-import competition from "./modules/competition";
-import {da_data} from "./instanses/dadata";
+import user from "./modules/user";
+import {mainInstance} from "./instances/mainInstance";
+import application from "./modules/application";
+import profile from "./modules/profile";
 
 export default {
-    competition: competition(da_data)
+    user: user(mainInstance),
+    application: application(mainInstance),
+    profile: profile(mainInstance)
 }
