@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {AdaptivityProvider, AppRoot, ConfigProvider} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import MainPage from "./pages/MainPage/MainPage";
@@ -7,6 +7,7 @@ import EndPage from "./pages/EndPage/EndPage";
 import ApplicationPage from "./pages/ApplicationPage/ApplicationPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import bridge from '@vkontakte/vk-bridge';
 
 export const router = createBrowserRouter([
     {
@@ -36,6 +37,7 @@ export const router = createBrowserRouter([
 ])
 
 const App = () => {
+
     return (
         <ConfigProvider appearance="light">
             <AdaptivityProvider>

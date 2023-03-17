@@ -19,13 +19,15 @@ const FilePicker = ({
                         completeMessage,
                         isError,
                         isEmpty,
-                        isComplete
+                        isComplete,
+                        format = undefined,
+                        multiple = true
                     }) => {
 
     const [currentInstruction, setCurrentInstruction] = useState('')
 
     const resetInstruction = useCallback(() => {
-        if (inputRef.current?.files.length > 0) {
+        if (inputRef?.current?.files.length > 0) {
             setCurrentInstruction('Загружено!')
         } else {
             setCurrentInstruction(instruction)
@@ -62,11 +64,12 @@ const FilePicker = ({
             </div>
             <div className={cl.inputWrapper}>
                 <div className={classJoiner(cl.inputWrapper, cl.inputBlockWrapper)}>
-                    <input id={id} type={'file'} multiple className={cl.input} ref={inputRef} onInput={() => {
-                        onInput && onInput()
-                        resetInstruction()
-                    }}/>
-                    <label for={id} className={classJoiner(cl.inputLabel, wrapperClass)}>
+                    <input id={id} type={'file'} multiple={multiple} className={cl.input} ref={inputRef}
+                           onInput={() => {
+                               onInput && onInput()
+                               resetInstruction()
+                           }} accept={format}/>
+                    <label htmlFor={id} className={classJoiner(cl.inputLabel, wrapperClass)}>
                         {imgSrc && <img src={imgSrc} alt={'Иконка'} className={cl.logo}/>}
                         <span>{buttonLabel}</span>
                     </label>
