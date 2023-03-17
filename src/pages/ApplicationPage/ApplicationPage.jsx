@@ -180,15 +180,11 @@ const ApplicationPage = () => {
                         }/>,
             <Controller control={control} name={'phone'} rules={
                 {
-                    required: 'Поле обязательно',
-                    pattern: {
-                        value: /^(\+7\s\()(\d{3})(\)\s)(\d{3})(-\d{2}){2}$/,
-                        message: 'Используйте правильный формат'
-                    }
+                    required: 'Поле обязательно'
                 }
             }
                         render={({field: {onChange, value}, fieldState: {error, invalid, isDirty}}) =>
-                            <TextInput required label={'Телефон'} placeholder={'+7 (999) 999-99-99'}
+                            <TextInput required label={'Телефон'} placeholder={'+7 (999) 999-99-99'} mask={'+7 (999) 999-99-99'}
                                        value={value} onInput={onChange}
                                        isEmpty={error?.type === 'required'}
                                        isComplete={!invalid && isDirty}
