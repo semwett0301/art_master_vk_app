@@ -9,10 +9,15 @@ import moment from 'moment';
 import toOptionsList from "../../utils/toOptionsList";
 import {junior, main, middle} from "./model/competition";
 import citizenship from "./model/citizenship";
+import {useDispatch, useSelector} from "react-redux";
+import {setMajorActionCreator} from "../../store/reducers/major/majorActionCreators";
+import {configNameToAlias} from "../PortfolioPage/config";
 
 const ApplicationPage = () => {
     const navigate = useNavigate()
     const location = useLocation()
+
+    const dispatch = useDispatch()
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
         mode: 'all',
@@ -132,7 +137,8 @@ const ApplicationPage = () => {
                         }
                     }
                                 render={({field: {onChange, value}, fieldState: {error, invalid, isDirty}}) =>
-                                    <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'} mask={'99.99.9999'} value={value}
+                                    <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'}
+                                               mask={'99.99.9999'} value={value}
                                                onInput={onChange} v
                                                emptyMessage={error?.message === 'Дозаполните дату' ? error?.message : undefined}
                                                errorMessage={error?.message !== 'Дозаполните дату' ? error?.message : undefined}
@@ -151,7 +157,10 @@ const ApplicationPage = () => {
                                                   description={'Перед выбором компетенции укажите дату рождения'}
                                                   failDescription={formState.errors?.birthdate}
                                                   selectedOption={value}
-                                                  setSelectedOption={onChange}
+                                                  setSelectedOption={elem => {
+                                                      onChange(elem)
+                                                      dispatch(setMajorActionCreator(Object.keys(configNameToAlias).filter(e => configNameToAlias[e] === elem.label)[0] ?? ''))
+                                                  }}
                                                   isEmpty={error?.type === 'required'}
                                                   isComplete={!invalid && isDirty}
                                                   onClick={() => {
@@ -223,7 +232,7 @@ const ApplicationPage = () => {
                 {
                     required: 'Поле обязательно',
                     pattern: {
-                        value:  /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i,
+                        value: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i,
                         message: 'Используйте формат: info@artmasters.ru'
                     }
                 }

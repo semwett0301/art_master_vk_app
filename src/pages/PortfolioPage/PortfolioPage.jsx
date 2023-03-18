@@ -6,14 +6,17 @@ import {Controller, useForm} from "react-hook-form";
 import TextField from "../../components/UI/TextField/TextField";
 import TextInput from "../../components/UI/TextInput/TextInput";
 import FilePicker from "../../components/UI/FilePicker/FilePicker";
+import {useSelector} from "react-redux";
 
 const PortfolioPage = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
+    const major = useSelector(state => state.major)
+
     const currentConfig = useMemo(() => {
-        return config['photograph']
-    }, [])
+        return config[major]
+    }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
         mode: 'all'
@@ -51,12 +54,12 @@ const PortfolioPage = () => {
                 submitFunction={handleSubmit(() => navigate('/end   ', {
                     location: location
                 }))} firstColumn={[
-            ...currentConfig.text.split('\n').map(e => {
+            ...currentConfig?.text.split('\n').map(e => {
                 return <div>{e}</div>
             }),
-            ...currentConfig.components?.firstColumn?.map(makeComponent)
+            ...currentConfig?.components?.firstColumn?.map(makeComponent)
         ]}
-                secondColumn={[currentConfig.components?.secondColumn?.map(makeComponent)]}/>
+                secondColumn={[currentConfig?.components?.secondColumn?.map(makeComponent)]}/>
     );
 }
 

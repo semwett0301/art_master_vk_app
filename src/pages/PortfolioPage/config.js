@@ -1,6 +1,6 @@
 import fileLogo from '../../components/UI/FilePicker/img/paper-clip.svg'
 
-const configNameToAlias = {
+export const configNameToAlias = {
     photograph: 'Фотограф'
 }
 
