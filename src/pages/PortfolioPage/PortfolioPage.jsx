@@ -31,7 +31,7 @@ const PortfolioPage = () => {
             const props = {
                 ...component.props,
                 errorMessage: error?.type !== 'required' ? error?.message : undefined,
-                isComplete: !invalid && isDirty,
+                isComplete: !invalid && isDirty && (component?.validation?.required || value !== ''),
                 isEmpty: error?.type === 'required'
             }
 
