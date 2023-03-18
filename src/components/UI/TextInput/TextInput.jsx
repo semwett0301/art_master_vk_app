@@ -8,7 +8,7 @@ import ReactInputMask from 'react-input-mask';
 const formatChars = {
     '9': '[0-9]',
     'a': '[A-Za-z]',
-    '*': '[A-Za-z0-9]'
+    '*': '[A-Za-z0-9]',
 }
 
 const TextInput = ({

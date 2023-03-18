@@ -100,6 +100,7 @@ const ProfilePage = () => {
                                         description={'Или иные документы, согласно пунктам 2.4 Приложения №1 и №2 к Положению о Чемпионате. Допустимый формат: jpg, png, pdf'}
                                         imgSrc={fileLogo} buttonLabel={'Загрузить'}
                                         instruction={'До 10 файлов (общий размер - до 20 Мб)'} inputRef={passport}
+                                        format={'.jpg,.png,.pdf'}
                                         onInput={
                                             () => {
                                                 onChange(passport.current.files?.length !== 0 ? passport.current.files : undefined)
@@ -160,7 +161,7 @@ const ProfilePage = () => {
                         rules={{
                             pattern: {
                                 value: /vk\.com\/(\w|\d)+?\/?$/,
-                                message: 'Неверный формат'
+                                message: 'Формат: vk.com/......'
                             }
                         }}
                         render={({field: {onChange, value}, fieldState: {error, isDirty, invalid}}) =>
@@ -176,7 +177,7 @@ const ProfilePage = () => {
                         rules={{
                             pattern: {
                                 value: /@(\w|\d)+?\/?$/,
-                                message: 'Неверный формат'
+                                message: 'Формат: @......'
                             }
                         }}
                         render={({field: {onChange, value}, fieldState: {error, isDirty, invalid}}) =>
