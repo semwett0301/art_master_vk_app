@@ -48,7 +48,7 @@ const TextField = ({
                 placeholder={placeholder} value={value} onInput={e => onInput(e.target.value)}
             />
             <div
-                className={classJoiner(cl.bottomDescription, failBottomDescription && cl.failBottomDescription)}>{bottomDescription}</div>
+                className={classJoiner(cl.bottomDescription, failBottomDescription && cl.failBottomDescription)}>{Array.isArray(bottomDescription) ? bottomDescription.map(e => <div>{e}</div>) : bottomDescription}</div>
         </div>
     );
 };

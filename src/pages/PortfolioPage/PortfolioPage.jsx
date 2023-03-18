@@ -15,7 +15,7 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config[major]
+        return config.web_designer
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
@@ -54,12 +54,12 @@ const PortfolioPage = () => {
                 submitFunction={handleSubmit(() => navigate('/end   ', {
                     location: location
                 }))} firstColumn={[
-            ...currentConfig?.text.split('\n').map(e => {
+            ...currentConfig.text.split('\n').map(e => {
                 return <div>{e}</div>
             }),
-            ...currentConfig?.components?.firstColumn?.map(makeComponent)
+            ...currentConfig.components?.firstColumn?.map(makeComponent)
         ]}
-                secondColumn={[currentConfig?.components?.secondColumn?.map(makeComponent)]}/>
+                secondColumn={[currentConfig.components?.secondColumn?.map(makeComponent)]}/>
     );
 }
 

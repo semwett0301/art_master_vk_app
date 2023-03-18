@@ -190,6 +190,9 @@ const ProfilePage = () => {
                         }>
             </Controller>,
             <Controller control={control}
+                        rules={{
+                            required: true
+                        }}
                         render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) =>
                             <CustomSelect required
                                           label={'Откуда узнали о Чемпионате'}
@@ -208,6 +211,9 @@ const ProfilePage = () => {
                                 text: 'Хочу участвовать в командных соревнованиях'
                             }]} checked={value} setChecked={onChange}/>} name={'agree1'}/>,
             <Controller control={control}
+                        rules={{
+                            required: true
+                        }}
                         render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) =>
                             <CustomSelect required
                                           label={'Направление командных соревнований'}
