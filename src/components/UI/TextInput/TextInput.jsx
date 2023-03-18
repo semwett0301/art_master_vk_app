@@ -28,40 +28,45 @@ const TextInput = ({
                        mask
                    }) => {
 
-    const wrapperClass = useMemo(() => {
-        if (errorMessage || isError) {
-            return cl.textFieldError
-        } else {
-            if (emptyMessage || isEmpty) {
-                return cl.textFieldEmpty
+        const wrapperClass = useMemo(() => {
+            if (errorMessage || isError) {
+                return cl.textFieldError
             } else {
-                if (completeMessage || isComplete) {
-                    return cl.textFieldComplete
+                if (emptyMessage || isEmpty) {
+                    return cl.textFieldEmpty
                 } else {
-                    return ''
+                    if (completeMessage || isComplete) {
+                        return cl.textFieldComplete
+                    } else {
+                        return ''
+                    }
                 }
             }
-        }
-    }, [errorMessage, emptyMessage, isEmpty, isError, isComplete])
+        }, [errorMessage, emptyMessage, isEmpty, isError, isComplete])
 
-    return (
-        <div className={classJoiner(cl.wrapper, className)}>
-            <InputHeader required={required} label={label} description={description} emptyMessage={emptyMessage}
-                         errorMessage={errorMessage} completeMessage={completeMessage} isEmpty={isEmpty}
-                         isError={isError} isComplete={isComplete}/>
-            {
-                mask ? <ReactInputMask formatChars={formatChars} placeholder={placeholder} mask={mask} value={value} onInput={e => onInput(e.target.value)}>
-                    {(inputProps) => <input
+        return (
+            <div className={classJoiner(cl.wrapper, className)}>
+                <InputHeader required={required} label={label} description={description} emptyMessage={emptyMessage}
+                             errorMessage={errorMessage} completeMessage={completeMessage} isEmpty={isEmpty}
+                             isError={isError} isComplete={isComplete}/>
+                {
+                    mask ? <ReactInputMask formatChars={formatChars}
+                                           mask={mask}
+                                           value={value}
+                                           onInput={(e) => onInput(e.target.value ? e.target.value.slice(0, -1) : undefined)}>
+                        {(inputProps) => <input
+                            className={classJoiner(cl.textField, wrapperClass)}
+                            placeholder={placeholder}
+                            type={'text'}
+                            {...inputProps}
+                        />}
+                    </ReactInputMask> : <input
                         className={classJoiner(cl.textField, wrapperClass)}
-                        {...inputProps}
-                        type={'text'} />}
-                </ReactInputMask> : <input
-                    className={classJoiner(cl.textField, wrapperClass)}
-                    placeholder={placeholder} type={'text'} value={value} onInput={e => onInput(e.target.value)}/>
-            }
-        </div>
-    );
-}
+                        placeholder={placeholder} type={'text'} value={value} onInput={e => onInput(e.target.value)}/>
+                }
+            </div>
+        );
+    }
 ;
 
 export default TextInput;

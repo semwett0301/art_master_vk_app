@@ -35,7 +35,7 @@ const InputHeader = ({
         <div className={classJoiner(cl.nameWrapper, className)}>
             <div
                 className={classJoiner(cl.name, messageClass)}><span
-                className={cl.required}>{required && !errorMessage && !emptyMessage && !completeMessage ? '*' : ''}</span>{errorMessage ? errorMessage : emptyMessage ? emptyMessage : completeMessage ? completeMessage : label}
+                className={cl.required}>{required ? '*' : ''}</span>{errorMessage ? errorMessage : emptyMessage ? emptyMessage : completeMessage ? completeMessage : label}
             </div>
             <div className={cl.description}>{description}</div>
         </div>

@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useEffect, useMemo} from 'react';
 import TextInput from "../../components/UI/TextInput/TextInput";
 import Checkbox from "../../components/UI/Checkbox/Checkbox";
 import Layout from "../../components/Layout/Layout";
@@ -15,7 +15,19 @@ const ApplicationPage = () => {
     const location = useLocation()
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
-        mode: 'all'
+        mode: 'all',
+        defaultValues: {
+            first_name: '',
+            last_name: '',
+            birthdate: '',
+            category: undefined,
+            citizenship: undefined,
+            region: '',
+            email: '',
+            phone: '',
+            agree1: false,
+            agree2: false
+        }
     })
 
     const dateOfBirth = watch('birthdate')
@@ -91,8 +103,16 @@ const ApplicationPage = () => {
                     </Controller>,
                     <Controller control={control} name={'birthdate'} rules={
                         {
-                            required: 'Поле обязательно',
+                            required: 'Дозаполните дату',
                             validate: value => {
+                                if (value.search('_') !== -1) {
+                                    if (value.search(/\d?/)) {
+                                        return true
+                                    } else {
+                                        return 'Дозаполните дату'
+                                    }
+                                }
+
                                 const date = moment(value, "DD.MM.YYYY", true)
 
                                 if (date.isValid()) {
@@ -106,17 +126,17 @@ const ApplicationPage = () => {
                                         }
                                     }
                                 } else {
-                                    return 'Используйте правильный формат'
+                                    return 'Дата некорректна'
                                 }
                             }
                         }
                     }
                                 render={({field: {onChange, value}, fieldState: {error, invalid, isDirty}}) =>
-                                    <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'} value={value}
+                                    <TextInput required label={'Дата рождения'} placeholder={'00.00.0000'} mask={'99.99.9999'} value={value}
                                                onInput={onChange} v
-                                               isEmpty={error?.type === 'required'}
-                                               isComplete={!invalid && isDirty}
-                                               errorMessage={error?.type !== 'required' ? error?.message : undefined}
+                                               emptyMessage={error?.message === 'Дозаполните дату' ? error?.message : undefined}
+                                               errorMessage={error?.message !== 'Дозаполните дату' ? error?.message : undefined}
+                                               isComplete={!invalid && isDirty && value.search('_') === -1}
                                     />
                                 }/>,
                     <Controller control={control} rules={
@@ -180,22 +200,30 @@ const ApplicationPage = () => {
                         }/>,
             <Controller control={control} name={'phone'} rules={
                 {
-                    required: 'Поле обязательно'
+                    required: 'Дозаполните телефон',
+                    pattern: {
+                        value: /^\+7\s\(\d{3}\)\s\d{3}-\d{2}-\d{2}$/,
+                        message: 'Дозаполните телефон'
+                    }
                 }
             }
-                        render={({field: {onChange, value}, fieldState: {error, invalid, isDirty}}) =>
-                            <TextInput required label={'Телефон'} placeholder={'+7 (999) 999-99-99'} mask={'+7 (999) 999-99-99'}
+                        render={({
+                                     field: {value, onChange},
+                                     fieldState: {error, invalid, isDirty},
+                                     formState: {submitCount}
+                                 }) =>
+                            <TextInput required label={'Телефон'} placeholder={'+7 (999) 999-99-99'}
+                                       mask={'+7 (999) 999-99-99'}
                                        value={value} onInput={onChange}
-                                       isEmpty={error?.type === 'required'}
-                                       isComplete={!invalid && isDirty}
-                                       errorMessage={error?.type !== 'required' ? error?.message : undefined}
+                                       isComplete={!invalid && isDirty && value.search('_') === -1}
+                                       emptyMessage={(error?.type === 'pattern' || error?.type === 'required') && submitCount > 0 ? error.message : undefined}
                             />
                         }/>,
             <Controller control={control} name={'email'} rules={
                 {
                     required: 'Поле обязательно',
                     pattern: {
-                        value: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
+                        value: /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@((`[^<>()[\].,;:\s@"]`+\.)+[^<>()[\].,;:\s@"]{2,})$/iu,
                         message: 'Используйте правильный формат'
                     }
                 }
