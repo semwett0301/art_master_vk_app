@@ -6,6 +6,8 @@ import {classJoiner} from "../../../utils/classJoiner";
 
 const TextField = ({
                        label,
+                       bottomDescription,
+                       failBottomDescription,
                        description,
                        placeholder,
                        required,
@@ -45,6 +47,8 @@ const TextField = ({
                 className={classJoiner(cl.textField, wrapperClass)}
                 placeholder={placeholder} value={value} onInput={e => onInput(e.target.value)}
             />
+            <div
+                className={classJoiner(cl.bottomDescription, failBottomDescription && cl.failBottomDescription)}>{bottomDescription}</div>
         </div>
     );
 };

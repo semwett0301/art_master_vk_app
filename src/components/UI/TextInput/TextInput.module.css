@@ -51,6 +51,23 @@
     border: 1px solid #E6D1FF;
 }
 
+.bottomDescription {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
+
+    color: #7A818B;
+
+    width: 100%;
+    margin-top: 3px;
+}
+
+.failBottomDescription {
+    color: #E81A3D;
+}
+
 @media screen and (max-width: 375px){
     .textField::placeholder {
         font-size: 14px;

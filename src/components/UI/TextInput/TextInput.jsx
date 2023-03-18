@@ -13,6 +13,8 @@ const formatChars = {
 
 const TextInput = ({
                        label,
+                       bottomDescription,
+                       failBottomDescription,
                        description,
                        placeholder,
                        required,
@@ -64,6 +66,8 @@ const TextInput = ({
                         className={classJoiner(cl.textField, wrapperClass)}
                         placeholder={placeholder} type={'text'} value={value} onInput={e => onInput(e.target.value)}/>
                 }
+                <div
+                    className={classJoiner(cl.bottomDescription, failBottomDescription && cl.failBottomDescription)}>{bottomDescription}</div>
             </div>
         );
     }

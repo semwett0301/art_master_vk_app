@@ -1,4 +1,4 @@
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import Layout from "../../components/Layout/Layout";
 import {useLocation, useNavigate} from "react-router-dom";
 import {config} from "./config";
@@ -19,37 +19,45 @@ const PortfolioPage = () => {
         mode: 'all'
     })
 
+    const makeComponent = useCallback(component => {
+        return <Controller control={control} rules={
+            {
+                ...component.validation
+            }
+        } render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) => {
+            const props = {
+                ...component.props,
+                errorMessage: error?.type !== 'required' ? error?.message : undefined,
+                isComplete: !invalid && isDirty,
+                isEmpty: error?.type === 'required'
+            }
+
+            switch (component.type) {
+                case 'TextField':
+                    return <TextField {...props} value={value} onInput={onChange}/>
+                case 'TextInput':
+                    return <TextInput {...props} value={value} onInput={onChange}/>
+                case 'FilePicker':
+                    return <FilePicker {...props} id={component.name}/>
+                default:
+                    return <></>
+            }
+        }
+        } name={component.name}/>
+    }, [control])
+
     return (
         <Layout buttonPlaceholder={'Сохранить'} headerText={'Портфолио'}
                 submitFunction={handleSubmit(() => navigate('/end   ', {
                     location: location
-                }))} firstColumn={[currentConfig.text]} secondColumn={[currentConfig.components.map(component => {
-            return <Controller control={control} rules={
-                {
-                    ...component.validation
-                }
-            } render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) => {
-                const props = {
-                    ...component.props,
-                    errorMessage: error?.type !== 'required' ? error?.message : undefined,
-                    isComplete: !invalid && isDirty,
-                    isEmpty: error?.type === 'required'
-                }
-
-                switch (component.type) {
-                    case 'TextField':
-                        return <TextField {...props} value={value} onInput={onChange}/>
-                    case 'TextInput':
-                        return <TextInput {...props} value={value} onInput={onChange}/>
-                    case 'FilePicker':
-                        return <FilePicker {...props} id={component.name}/>
-                    default:
-                        return <></>
-                }
-            }
-            } name={component.name}/>
-        })]}/>
+                }))} firstColumn={[
+            ...currentConfig.text.split('\n').map(e => {
+                return <div>{e}</div>
+            }),
+            ...currentConfig.components?.firstColumn?.map(makeComponent)
+        ]}
+                secondColumn={[currentConfig.components?.secondColumn?.map(makeComponent)]}/>
     );
-};
+}
 
 export default PortfolioPage;

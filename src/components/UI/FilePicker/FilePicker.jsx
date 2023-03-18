@@ -60,7 +60,7 @@ const FilePicker = ({
                          isEmpty={isEmpty} isError={isError} emptyMessage={emptyMessage}
                          completeMessage={completeMessage} errorMessage={errorMessage}/>
             <div className={cl.description}>
-                {description}
+                {Array.isArray(description) ? description.map(e => <div>{e}</div>) : description}
             </div>
             <div className={cl.inputWrapper}>
                 <div className={classJoiner(cl.inputWrapper, cl.inputBlockWrapper)}>
@@ -75,7 +75,7 @@ const FilePicker = ({
                     </label>
                 </div>
                 <div className={cl.instruction}>
-                    {currentInstruction}
+                    {Array.isArray(currentInstruction) ? instruction.map(e => <div>{e}</div>) : currentInstruction}
                 </div>
             </div>
         </div>
