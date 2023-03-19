@@ -15,7 +15,7 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config.d_designer
+        return config.video_operator
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
