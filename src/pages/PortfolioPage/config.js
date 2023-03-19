@@ -6,6 +6,46 @@ export const configNameToAlias = {
     photograph: 'Фотограф'
 }
 
+const about = {
+    type: 'TextField',
+    name: 'about',
+    props: {
+        label: 'О себе',
+        placeholder: 'Опишите ваши интересы и цели в жизни, в том числе профессиональные.',
+        bottomDescription: [
+            'Ответьте на следующие вопросы:',
+            '',
+            'Почему я решил участвовать в Чемпионате?',
+            'Каких целей я хочу здесь достичь?'
+        ],
+        required: true
+    },
+    validation: {
+        required: true
+    }
+}
+
+const workExamples = {
+    type: 'FilePicker',
+    name: 'examples',
+    props: {
+        label: 'Примеры работ',
+        placeholder: 'Выбрать',
+        required: true,
+        description: ['Старайтесь в портфолио отобразить наибольшее количество разных жанров, приветствуется преобладание снимком с участием людей.',
+            'Мы ожидаем увидеть работы в следующих жанрах: портрет, репортаж, художественная авторская фотография, а также работы в любых других жанрах, в которых вы работаете.',
+            'Портфолио должно отражать ваш стиль, взгляд на мир, профессиональные навыки и стилистическое многообразие.'],
+        instruction: ['Формат: pdf.', 'Размер презентации не должен превышать 50 Мб.'],
+        format: '.pdf',
+        multiple: false,
+        imgSrc: fileLogo,
+        buttonLabel: 'Загрузить'
+    },
+    validation: {
+        required: true
+    }
+}
+
 const videoVisitka = {
     type: 'FilePicker',
     name: 'video',
@@ -58,24 +98,7 @@ const workDescription = (number, required = false) => {
 export const config = {
     arranger: {
         components: {
-            firstColumn: [{
-                type: 'TextField',
-                name: 'about',
-                props: {
-                    label: 'О себе',
-                    placeholder: 'Опишите ваши интересы и цели в жизни, в том числе профессиональные.',
-                    bottomDescription: [
-                        'Ответьте на следующие вопросы:',
-                        '',
-                        'Почему я решил участвовать в Чемпионате?',
-                        'Каких целей я хочу здесь достичь?'
-                    ],
-                    required: true
-                },
-                validation: {
-                    required: true
-                }
-            }],
+            firstColumn: [about],
             secondColumn: [
                 videoVisitka,
                 {
@@ -154,24 +177,7 @@ export const config = {
     web_designer: {
         components: {
             firstColumn: [
-                {
-                    type: 'TextField',
-                    name: 'about',
-                    props: {
-                        label: 'О себе',
-                        placeholder: 'Опишите ваши интересы и цели в жизни, в том числе профессиональные.',
-                        bottomDescription: [
-                            'Ответьте на следующие вопросы:',
-                            '',
-                            'Почему я решил участвовать в Чемпионате?',
-                            'Каких целей я хочу здесь достичь?'
-                        ],
-                        required: true
-                    },
-                    validation: {
-                        required: true
-                    }
-                },
+                about,
                 {
                     type: 'TextField',
                     name: 'courses',
@@ -189,26 +195,7 @@ export const config = {
                     placeholder: 'Опишите профессиональные устремления и приведите интересные факты из творческой жизни.'
                 }
             },
-                {
-                    type: 'FilePicker',
-                    name: 'examples',
-                    props: {
-                        label: 'Примеры работ',
-                        placeholder: 'Выбрать',
-                        required: true,
-                        description: ['Старайтесь в портфолио отобразить наибольшее количество разных жанров, приветствуется преобладание снимком с участием людей.',
-                            'Мы ожидаем увидеть работы в следующих жанрах: портрет, репортаж, художественная авторская фотография, а также работы в любых других жанрах, в которых вы работаете.',
-                            'Портфолио должно отражать ваш стиль, взгляд на мир, профессиональные навыки и стилистическое многообразие.'],
-                        instruction: ['Формат: pdf.', 'Размер презентации не должен превышать 50 Мб.'],
-                        format: '.pdf',
-                        multiple: false,
-                        imgSrc: fileLogo,
-                        buttonLabel: 'Загрузить'
-                    },
-                    validation: {
-                        required: true
-                    }
-                },
+                workExamples,
                 workLink(1, true),
                 workDescription(1, true),
                 workLink(2, true),
@@ -249,36 +236,11 @@ export const config = {
     photograph: {
         components: {
             firstColumn: [
-                {
-                    type: 'TextField',
-                    name: 'about',
-                    props: {
-                        label: 'О себе',
-                        placeholder: 'Опишите ваши интересы и цели в жизни, в том числе профессиональные.   ',
-                        required: true,
-                        bottomDescription: 'Ответьте на следующие вопросы: «Почему я решил участвовать в Чемпионате?», «Каких целей я хочу здесь достичь?»'
-                    },
-                    validation: {
-                        required: true
-                    }
-                }
+                about
             ],
             secondColumn:
                 [
-                    {
-                        type: 'FilePicker',
-                        name: 'video',
-                        props: {
-                            label: 'Видеовизитка',
-                            placeholder: 'Выбрать',
-                            description: 'Информация «О себе» может быть представлена в формате видеопрезентации себя и своего творчества.',
-                            instruction: 'Длительность — не более 1 мин.',
-                            multiple: false,
-                            imgSrc: fileLogo,
-                            buttonLabel: 'Загрузить'
-                        },
-                        validation: {}
-                    },
+                    videoVisitka,
                     {
                         type: 'FilePicker',
                         name: 'professional',
@@ -305,26 +267,7 @@ export const config = {
                             required: true
                         }
                     },
-                    {
-                        type: 'FilePicker',
-                        name: 'examples',
-                        props: {
-                            label: 'Примеры работ',
-                            placeholder: 'Выбрать',
-                            required: true,
-                            description: ['Старайтесь в портфолио отобразить наибольшее количество разных жанров, приветствуется преобладание снимком с участием людей.',
-                                'Мы ожидаем увидеть работы в следующих жанрах: портрет, репортаж, художественная авторская фотография, а также работы в любых других жанрах, в которых вы работаете.',
-                                'Портфолио должно отражать ваш стиль, взгляд на мир, профессиональные навыки и стилистическое многообразие.'],
-                            instruction: ['Формат: pdf.', 'Размер презентации не должен превышать 50 Мб.'],
-                            format: '.pdf',
-                            multiple: false,
-                            imgSrc: fileLogo,
-                            buttonLabel: 'Загрузить'
-                        },
-                        validation: {
-                            required: true
-                        }
-                    }
+                    workExamples
                 ]
         }
         ,
