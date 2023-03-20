@@ -7,7 +7,8 @@ export const configNameToAlias = {
     video_montage: 'Видеомонтажер',
     d_designer: '3D-дизайнер',
     screenwriter: 'Сценарист',
-    video_operator: 'Видеооператор'
+    video_operator: 'Видеооператор',
+    compositor_of_modern_music: 'Композитор популярной музыки',
 }
 
 const about = (questions = [], addition = []) => {
@@ -76,6 +77,25 @@ const videoVisitka = {
         buttonLabel: 'Загрузить'
     },
     validation: {}
+}
+
+const compositorWorkExample = (number) => {
+    return {
+        type: 'FilePicker',
+        name: `work_example_${number}`,
+        props: {
+            label: `Работа №${number}`,
+            description: 'Примеры работ (не более двух работ!) должны быть представлены в виде аудиофайла в формате. Mp3, с названием файла латинскими буквами: «Фамилия_Название работы» (например, Ivanov_song1.mp3).',
+            instruction: 'Аудио, mp3',
+            format: '.mp3',
+            required: true,
+            buttonLabel: 'Загрузить',
+            imgSrc: fileLogo
+        },
+        validation: {
+            required: true
+        }
+    }
 }
 
 const workLink = (number, required = false) => {
@@ -595,6 +615,58 @@ export const config = {
             'Композиция кадра.\n' +
             'Наличие объема и фактуры.\n' +
             'Работа со светом.\n' +
+            '\n' +
+            'Оценка за портфолио — 60 баллов.\n'
+    },
+    compositor_of_modern_music: {
+        components: {
+            firstColumn: [
+                about([
+                    'Почему я решил участвовать в Чемпионате?',
+                    'Каких целей я хочу здесь достичь?'
+                ], [
+                    'Опишите ваши интересы и цели в жизни, в том числе профессиональные.'
+                ]),
+                {
+                    type: 'TextField',
+                    name: 'job_place',
+                    props: {
+                        label: 'Место работы, профессиональный опыт, интересы и увлечения',
+                        placeholder: 'Ваш опыт в песенном творчестве',
+                        bottomDescription: ['В каком стиле вы пишете музыку?',
+                            'Владеете ли вы каким-либо музыкальным инструментом?',
+                            'Каковы ваши вокальные навыки?'],
+                        required: true
+                    },
+                    validation: {
+                        required: true
+                    }
+                },
+            ],
+            secondColumn: [
+                {
+                    type: 'TextField',
+                    name: 'plugins',
+                    props: {
+                        label: 'Используемые программы и плагины для создания музыки',
+                        placeholder: 'Перечислите программы',
+                        bottomDescription: ['Какими программами для создания музыки (DAW) вы пользуетесь?',
+                            'Какие ваши любимые плагины: виртуальные синтезаторы, сэмплеры, библиотеки, обработка?'],
+                        required: true
+                    },
+                    validation: {
+                        required: true
+                    }
+                },
+                compositorWorkExample(1),
+                compositorWorkExample(2)
+            ]
+        },
+        text: 'Примечание. Организатор гарантирует, что присланные материалы не будут выложены в публичный доступ. \n' +
+            '\n' +
+            'Критерии оценки:  \n' +
+            '1. Соответствие формальным требованиям заполнения.\n' +
+            '2. Качество представленной работы: целостность композиции, качество мелодии, текста, гармонии, их взаимодействия в песне, навыки аранжировки и саунд-продюсирования.\n' +
             '\n' +
             'Оценка за портфолио — 60 баллов.\n'
     }
