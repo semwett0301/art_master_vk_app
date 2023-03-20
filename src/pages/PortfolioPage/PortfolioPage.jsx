@@ -15,7 +15,7 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config.editing_director
+        return config.copywriter
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
