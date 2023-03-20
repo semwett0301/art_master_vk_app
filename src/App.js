@@ -41,16 +41,16 @@ export const router = createBrowserRouter([
 
 const App = () => {
 
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
 
-    useEffect(() => {
-        async function fetchData () {
-            const userId = await bridge.send('VKWebAppGetUserInfo').then(r => r.id)
-            dispatch(setUserIdActionCreator(userId))
-        }
-
-        fetchData().catch(e => console.log(e))
-    }, [])
+    // useEffect(() => {
+    //     async function fetchData () {
+    //         const userId = await bridge.send('VKWebAppGetUserInfo').then(r => r.id)
+    //         dispatch(setUserIdActionCreator(userId))
+    //     }
+    //
+    //     fetchData().catch(e => console.log(e))
+    // }, [])
 
     return (
         <ConfigProvider appearance="light">

@@ -1,7 +1,7 @@
 import React, {useCallback, useMemo} from 'react';
 import Layout from "../../components/Layout/Layout";
 import {useLocation, useNavigate} from "react-router-dom";
-import {config} from "./config";
+import {config, configNameToAlias} from "./config";
 import {Controller, useForm} from "react-hook-form";
 import TextField from "../../components/UI/TextField/TextField";
 import TextInput from "../../components/UI/TextInput/TextInput";
@@ -15,7 +15,7 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config[major]
+        return config.editing_director
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
