@@ -15,7 +15,7 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config.copywriter
+        return config.media_compositor
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
