@@ -12,12 +12,14 @@ import citizenship from "./model/citizenship";
 import {useDispatch, useSelector} from "react-redux";
 import {setMajorActionCreator} from "../../store/reducers/major/majorActionCreators";
 import {configNameToAlias} from "../PortfolioPage/config";
+import request from "../../api/request";
 
 const ApplicationPage = () => {
     const navigate = useNavigate()
     const location = useLocation()
 
     const dispatch = useDispatch()
+    const userId = useSelector(state => state.userId)
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
         mode: 'all',
@@ -25,7 +27,7 @@ const ApplicationPage = () => {
             first_name: '',
             last_name: '',
             birthdate: '',
-            category: undefined,
+            ref_category_id: undefined,
             citizenship: undefined,
             region: '',
             email: '',
@@ -61,15 +63,17 @@ const ApplicationPage = () => {
         }
     }, [dateOfBirth])
 
-    const onSubmit = useCallback(() => {
-
+    const onSubmit = useCallback(async (data) => {
+        await request.application({
+            vk_id: user_id,
+            ...data
+        })
     }, [])
 
     return (
         <Layout buttonPlaceholder={'Перейти к заполнению профиля'} headerText={'Заявка'}
-                submitFunction={handleSubmit(() => {
-                    console.log('click')
-                    onSubmit()
+                submitFunction={handleSubmit(async (data) => {
+                    await onSubmit(data).catch(e => console.log(e))
                     navigate('/profile', {
                         location: location
                     })
@@ -172,7 +176,7 @@ const ApplicationPage = () => {
                                                       }
                                                   }}
                                                   options={competition}/>}
-                                name={'category'}/>,
+                                name={'ref_category_id'}/>,
                     <Controller control={control} rules={
                         {
                             required: 'Заполните поле'

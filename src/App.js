@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {AdaptivityProvider, AppRoot, ConfigProvider} from '@vkontakte/vkui';
 import '@vkontakte/vkui/dist/vkui.css';
 import MainPage from "./pages/MainPage/MainPage";
@@ -7,8 +7,10 @@ import EndPage from "./pages/EndPage/EndPage";
 import ApplicationPage from "./pages/ApplicationPage/ApplicationPage";
 import PortfolioPage from "./pages/PortfolioPage/PortfolioPage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import {Provider} from "react-redux";
+import {Provider, useDispatch} from "react-redux";
 import { store } from './store/index'
+import bridge from "@vkontakte/vk-bridge";
+import {setUserIdActionCreator} from "./store/reducers/userId/userIdActionCreators";
 
 export const router = createBrowserRouter([
     {
@@ -38,6 +40,18 @@ export const router = createBrowserRouter([
 ])
 
 const App = () => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        async function fetchData () {
+            const userId = await bridge.send('VKWebAppGetUserInfo').then(r => r.id)
+            dispatch(setUserIdActionCreator(userId))
+        }
+
+        fetchData().catch(e => console.log(e))
+    }, [])
+
     return (
         <ConfigProvider appearance="light">
             <AdaptivityProvider>

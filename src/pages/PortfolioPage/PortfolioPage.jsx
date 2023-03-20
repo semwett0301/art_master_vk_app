@@ -30,7 +30,7 @@ const PortfolioPage = () => {
         } render={({field: {value, onChange}, fieldState: {error, invalid, isDirty}}) => {
             const props = {
                 ...component.props,
-                errorMessage: error?.type !== 'required' ? error?.message : undefined,
+                errorMessage: error?.type !== 'required' && error?.message ? error?.message : undefined,
                 isComplete: !invalid && isDirty && (component?.validation?.required || value !== ''),
                 isEmpty: error?.type === 'required'
             }
@@ -50,7 +50,7 @@ const PortfolioPage = () => {
     }, [control])
 
     return (
-        <Layout buttonPlaceholder={'Сохранить'} headerText={'Портфолио'}
+        <Layout buttonPlaceholder={'Сохранить'} headerText={`Портфолио ${configNameToAlias[major]}`}
                 submitFunction={handleSubmit(() => navigate('/end   ', {
                     location: location
                 }))} firstColumn={[
