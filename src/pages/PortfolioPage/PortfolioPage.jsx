@@ -15,7 +15,7 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config.compositor_of_modern_music
+        return config[major]
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
