@@ -15,7 +15,7 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config.web_designer
+        return config.costume_designer
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
