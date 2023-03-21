@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo, useRef} from 'react';
 import Layout from "../../components/Layout/Layout";
 import {useLocation, useNavigate} from "react-router-dom";
 import {config, configNameToAlias} from "./config";
@@ -15,11 +15,15 @@ const PortfolioPage = () => {
     const major = useSelector(state => state.major)
 
     const currentConfig = useMemo(() => {
-        return config.costume_designer
+        return config[major]
     }, [major])
 
     const {control, handleSubmit, formState, setError, watch} = useForm({
         mode: 'all'
+    })
+
+    const files = useRef({
+        [major]: {}
     })
 
     const makeComponent = useCallback(component => {
@@ -35,13 +39,22 @@ const PortfolioPage = () => {
                 isEmpty: error?.type === 'required'
             }
 
+            files.current[major][component.name] = {
+                current: {}
+            }
+
             switch (component.type) {
                 case 'TextField':
                     return <TextField {...props} value={value} onInput={onChange}/>
                 case 'TextInput':
                     return <TextInput {...props} value={value} onInput={onChange}/>
                 case 'FilePicker':
-                    return <FilePicker {...props} id={component.name}/>
+                    return <FilePicker inputRef={files.current[major][component.name]} onInput={
+                        () => {
+                            onChange(files.current[major][component.name].current.files?.length !== 0 ? files.current[major][component.name].current.files : undefined)
+                        }
+                    } {...props} id={component.name} isEmpty={error?.type === 'required'}
+                                       isComplete={!invalid && isDirty && value !== undefined}/>
                 default:
                     return <></>
             }
