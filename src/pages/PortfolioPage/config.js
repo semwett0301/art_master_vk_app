@@ -129,7 +129,7 @@ const workLink = (number, required = false, description = []) => {
         validation: {
             required: required,
             pattern: {
-                value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                 message: 'Введите ссылку'
             }
         }
@@ -198,7 +198,7 @@ export const config = {
                     validation: {
                         required: true,
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -751,7 +751,7 @@ export const config = {
                     validation: {
                         required: true,
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -934,7 +934,7 @@ export const config = {
                     },
                     validation: {
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -993,7 +993,7 @@ export const config = {
                     validation: {
                         required: true,
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -1026,7 +1026,7 @@ export const config = {
                     },
                     validation: {
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -1105,7 +1105,7 @@ export const config = {
                     },
                     validation: {
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -1336,7 +1336,7 @@ export const config = {
                     validation: {
                         required: true,
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -1481,7 +1481,7 @@ export const config = {
                     validation: {
                         required: true,
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -1594,7 +1594,7 @@ export const config = {
                     },
                     validation: {
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -1925,7 +1925,7 @@ export const config = {
                     validation: {
                         required: true,
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -2188,7 +2188,7 @@ export const config = {
                     validation: {
                         required: true,
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
@@ -2316,7 +2316,7 @@ export const config = {
                     },
                     validation: {
                         pattern: {
-                            value: /http[s]?:\/(?:\/[^\/]+){1,}(?:\/[А-Яа-яёЁ\w ]+\.[a-z]{3,5}(?![\/]|[\wА-Яа-яёЁ]))/,
+                            value: /(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/,
                             message: 'Введите ссылку'
                         }
                     }
